@@ -17,9 +17,9 @@ public class Cps {
         JInternalFrame frame1 = new JInternalFrame("Click here to start");
         JInternalFrame frame2 = new JInternalFrame("Click here to start");
         JInternalFrame frame3 = new JInternalFrame("Click here to start");
-        JButton fiveReset = new JButton("Reset test");
-        JButton tenReset = new JButton("Reset test");
-        JButton twentyReset = new JButton("Reset test");
+        JButton fiveReset = new JButton("Click twice to reset test");
+        JButton tenReset = new JButton("Click twice to reset test");
+        JButton twentyReset = new JButton("Click twice to reset test");
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -154,6 +154,9 @@ public class Cps {
         fiveButton.setFont(new Font("Times new Roman", Font.BOLD, 24));
         tenButton.setFont(new Font("Times new Roman", Font.BOLD, 24));
         twentyButton.setFont(new Font("Times new Roman", Font.BOLD, 24));
+        twentyReset.setFont(new Font("Times new Roman", Font.BOLD, 18));
+        tenReset.setFont(new Font("Times new Roman", Font.BOLD, 18));
+        fiveReset.setFont(new Font("Times new Roman", Font.BOLD, 18));
 
 
 
@@ -184,7 +187,7 @@ public class Cps {
         mainFrame.add(tabbedPane);
         mainFrame.setSize(dim.width / 2, dim.height / 2);
         mainFrame.setLocation(dim.width/2-mainFrame.getSize().width/2, dim.height/2-mainFrame.getSize().height/2);
-        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setIconImage(new ImageIcon(getClass().getResource("icons/computer-mouse.png")).getImage());
         mainFrame.setVisible(true);
     }
