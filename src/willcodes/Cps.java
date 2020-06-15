@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 public class Cps {
     private int five = 0;
@@ -11,6 +12,7 @@ public class Cps {
     private int twenty = 0;
 
     public Cps() {
+
 
         JInternalFrame frame1 = new JInternalFrame("Click here to start");
         JInternalFrame frame2 = new JInternalFrame("Click here to start");
@@ -35,44 +37,42 @@ public class Cps {
         JButton tenButton = new JButton("Click");
         JButton twentyButton = new JButton("Click");
 
+
         fiveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 five += 1;
                 fiveText.setText("" + five);
-                if (five >= 20) {
-                    fiveButton.setEnabled(false);
-                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            fiveReset.setEnabled(false);
+                            TimeUnit.SECONDS.sleep(5);
+                            if (five != 0) {
+                                fiveText.setText("Your average CPS is: " + five / 5);
+                            }
+                            fiveButton.setEnabled(false);
+                            TimeUnit.SECONDS.sleep(2);
+                            fiveReset.setEnabled(true);
+                        } catch (InterruptedException interruptedException) {
+                            interruptedException.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         });
-        tenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ten += 1;
-                tenText.setText("" + ten);
-                if (ten >= 20) {
-                    tenButton.setEnabled(false);
-                }
-            }
-        });
-        twentyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                twenty += 1;
-                twentyText.setText("" + twenty);
-                if (twenty >= 20) {
-                    twentyButton.setEnabled(false);
-                }
-            }
-        });
+
         fiveReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 five = 0;
                 fiveText.setText("" + five);
                 fiveButton.setEnabled(true);
+
             }
         });
+
         tenReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,8 +84,8 @@ public class Cps {
         twentyReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ten = 0;
-                twentyText.setText("" + ten);
+                twenty = 0;
+                twentyText.setText("" + twenty);
                 twentyButton.setEnabled(true);
             }
         });
