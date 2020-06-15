@@ -15,6 +15,9 @@ public class Cps {
         JInternalFrame frame1 = new JInternalFrame("Click here to start");
         JInternalFrame frame2 = new JInternalFrame("Click here to start");
         JInternalFrame frame3 = new JInternalFrame("Click here to start");
+        JButton fiveReset = new JButton("Reset test");
+        JButton tenReset = new JButton("Reset test");
+        JButton twentyReset = new JButton("Reset test");
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         JTabbedPane tabbedPane = new JTabbedPane();
@@ -41,8 +44,50 @@ public class Cps {
                 }
             }
         });
-
-
+        tenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ten += 1;
+                tenText.setText("" + ten);
+                if (ten >= 20) {
+                    tenButton.setEnabled(false);
+                }
+            }
+        });
+        twentyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                twenty += 1;
+                twentyText.setText("" + twenty);
+                if (twenty >= 20) {
+                    twentyButton.setEnabled(false);
+                }
+            }
+        });
+        fiveReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                five = 0;
+                fiveText.setText("" + five);
+                fiveButton.setEnabled(true);
+            }
+        });
+        tenReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ten = 0;
+                tenText.setText("" + ten);
+                tenButton.setEnabled(true);
+            }
+        });
+        twentyReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ten = 0;
+                twentyText.setText("" + ten);
+                twentyButton.setEnabled(true);
+            }
+        });
 
         frame1.setFont(new Font("Times new Roman", Font.BOLD, 24));
         frame2.setFont(new Font("Times new Roman", Font.BOLD, 24));
@@ -60,19 +105,19 @@ public class Cps {
         frame1.setResizable(false);
         frame1.add(fiveButton);
         frame1.setVisible(true);
-        fiveSeconds.add(frame1); fiveSeconds.add(fiveText);
+        fiveSeconds.add(frame1); fiveSeconds.add(fiveText); fiveSeconds.add(fiveReset);
 
         frame2.setPreferredSize(new Dimension(250, 150));
         frame2.setResizable(false);
         frame2.add(tenButton);
         frame2.setVisible(true);
-        tenSeconds.add(frame2); tenSeconds.add(tenText);
+        tenSeconds.add(frame2); tenSeconds.add(tenText); tenSeconds.add(tenReset);
 
         frame3.setPreferredSize(new Dimension(250, 150));
         frame3.setResizable(false);
         frame3.add(twentyButton);
         frame3.setVisible(true);
-        twentySeconds.add(frame3); twentySeconds.add(twentyText);
+        twentySeconds.add(frame3); twentySeconds.add(twentyText); twentySeconds.add(twentyReset);
 
 
         tabbedPane.add("Five Seconds", fiveSeconds);
