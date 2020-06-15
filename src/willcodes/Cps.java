@@ -73,6 +73,32 @@ public class Cps {
             }
         });
 
+        tenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ten += 1;
+                tenText.setText("" + ten);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            tenReset.setEnabled(false);
+                            TimeUnit.SECONDS.sleep(10);
+                            if (ten != 0) {
+                                tenText.setText("Your average CPS is: " + ten / 10);
+                            }
+                            tenButton.setEnabled(false);
+                            TimeUnit.SECONDS.sleep(2);
+                            tenReset.setEnabled(true);
+                        } catch (InterruptedException interruptedException) {
+                            interruptedException.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
+
+
         tenReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,6 +107,34 @@ public class Cps {
                 tenButton.setEnabled(true);
             }
         });
+
+
+        twentyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                twenty += 1;
+                twentyText.setText("" + twenty);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            twentyReset.setEnabled(false);
+                            TimeUnit.SECONDS.sleep(20);
+                            if (twenty != 0) {
+                                twentyText.setText("Your average CPS is: " + twenty / 10);
+                            }
+                            twentyButton.setEnabled(false);
+                            TimeUnit.SECONDS.sleep(2);
+                            twentyReset.setEnabled(true);
+                        } catch (InterruptedException interruptedException) {
+                            interruptedException.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
+
+
         twentyReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -89,6 +143,7 @@ public class Cps {
                 twentyButton.setEnabled(true);
             }
         });
+
 
         frame1.setFont(new Font("Times new Roman", Font.BOLD, 24));
         frame2.setFont(new Font("Times new Roman", Font.BOLD, 24));
