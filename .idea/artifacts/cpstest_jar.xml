@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="cpstest:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/cpstest_jar</output-path>
+    <root id="root">
+      <element id="archive" name="cpstest.jar">
+        <element id="module-output" name="cpstest" />
+      </element>
+    </root>
+  </artifact>
+</component>

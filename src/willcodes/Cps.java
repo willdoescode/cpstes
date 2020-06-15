@@ -34,6 +34,7 @@ public class Cps {
         JButton fiveButton = new JButton("Click");
         JButton tenButton = new JButton("Click");
         JButton twentyButton = new JButton("Click");
+
         fiveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
